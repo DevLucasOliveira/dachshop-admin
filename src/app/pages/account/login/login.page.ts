@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/data.service';
 
@@ -18,9 +18,27 @@ export class LoginPage implements OnInit {
     private toastCtrl: ToastController,
     private navCtrl: NavController,
     private service: DataService
-  ) { }
+  ) {
+    this.form = this.fb.group({
+      userName: ['', Validators.compose([
+        Validators.required,
+      ])],
+      password: ['', Validators.compose([
+        Validators.minLength(6),
+        Validators.maxLength(20),
+        Validators.required])]
+    });
+  }
 
-  ngOnInit() { 
+  ngOnInit() {
+  }
+
+  toogleHide() {
+    this.hide = !this.hide;
+  }
+
+  submit() {
+
   }
 
 }
