@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     private service: DataService
   ) {
     this.form = this.fb.group({
-      userName: ['', Validators.compose([
+      username: ['', Validators.compose([
         Validators.required,
       ])],
       password: ['', Validators.compose([
@@ -33,11 +33,15 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  toogleHide() {
+  toggleHide() {
     this.hide = !this.hide;
   }
 
   submit() {
+
+  }
+
+  resetPassword() {
 
   }
 
