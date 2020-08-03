@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoadingController, ToastController, NavController } from '@ionic/angular';
 import { DataService } from 'src/app/data.service';
 import { UserModel } from 'src/app/models/user.model';
+import { SecurityUtil } from 'src/app/utils/security.util';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginPage implements OnInit {
   public hide = true;
   public form: FormGroup;
 
-  
+
   constructor(
     private fb: FormBuilder,
     private loadingCtrl: LoadingController,
@@ -32,7 +33,7 @@ export class LoginPage implements OnInit {
     });
 
   }
-  
+
 
   ngOnInit() {
   }
@@ -42,15 +43,16 @@ export class LoginPage implements OnInit {
   }
 
   async submit() {
-    if (this.form.valid)
+    if (this.form.valid) {
       return;
+    }
 
     const loading = await this.loadingCtrl.create({ message: 'Autenticando...' });
     loading.present();
 
     this.service.authenticate(this.form.value).subscribe(
       (res: UserModel) => {
-        // SecurityUtil.set(res);
+        SecurityUtil.set(res);
         loading.dismiss();
         this.navCtrl.navigateRoot('/');
       },
@@ -61,8 +63,8 @@ export class LoginPage implements OnInit {
   }
 
   async showError(message) {
-    const error = await this.toastCtrl.create({ message: message,  showCloseButton: true, closeButtonText: 'Fechar', duration: 3000});
-    error.present();
+    //  const error = await this.toastCtrl.create({ message: message,  showCloseButton: true, closeButtonText: 'Fechar', duration: 3000});
+    //  error.present();
   }
 
 
@@ -71,3 +73,4 @@ export class LoginPage implements OnInit {
   }
 
 }
+
