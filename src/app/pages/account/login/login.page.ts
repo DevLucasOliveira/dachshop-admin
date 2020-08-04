@@ -62,15 +62,22 @@ export class LoginPage implements OnInit {
       });
   }
 
+  async resetPassword() {
+    if (this.form.controls['username'].invalid) {
+      this.showError('Usuário inválido');
+      return;
+    }
+
+    const loading = await this.loadingCtrl.create({ message: 'Restaurando senha...' });
+    loading.present();
+  }
+
+
   async showError(message) {
     //  const error = await this.toastCtrl.create({ message: message,  showCloseButton: true, closeButtonText: 'Fechar', duration: 3000});
     //  error.present();
   }
 
-
-  resetPassword() {
-
-  }
 
 }
 
