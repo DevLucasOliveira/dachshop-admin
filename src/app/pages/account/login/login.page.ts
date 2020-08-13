@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
   }
 
   async submit() {
-    if (this.form.valid) {
+    if (this.form.invalid) {
       return;
     }
 

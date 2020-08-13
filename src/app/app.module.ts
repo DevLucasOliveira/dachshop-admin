@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FramePage } from './pages/shared/frame/frame.page';
+import { AuthorizedGuard } from './guards/authorized.guard';
+import { ManagerGuard } from './guards/manager.guard';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FramePage } from './pages/shared/frame/frame.page';
   ],
   providers: [
     StatusBar,
+    AuthorizedGuard,
+    ManagerGuard,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
