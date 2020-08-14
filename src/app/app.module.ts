@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FramePage } from './pages/shared/frame/frame.page';
 import { AuthorizedGuard } from './guards/authorized.guard';
 import { ManagerGuard } from './guards/manager.guard';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ManagerGuard } from './guards/manager.guard';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(),
+    ComponentsModule,
     AppRoutingModule
   ],
   providers: [

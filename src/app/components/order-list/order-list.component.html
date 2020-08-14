@@ -7,6 +7,9 @@
 
   <ion-list>
     <ion-item class="clickable" *ngFor="let order of orders" (click)="goToOrder(order.number)">
+      <h1 slot="start">
+        <app-order-status-badge [status]="order.status"></app-order-status-badge>
+      </h1>
       <ion-label>
         <strong>{{ order.number }}</strong>
         <small>{{ order.date | date: 'dd/MM/yyyy HH:mm' }}</small>
